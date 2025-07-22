@@ -23,26 +23,34 @@
           class="logo"
           alt="Manoj Kumar Jha Logo"
         />
-        <div class="right">
+        <!-- Desktop Navigation -->
+        <div class="desktop-nav">
           <ul>
             <li><a href="#header">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">CV</a></li>
             <li><a href="#contact">Contact Me</a></li>
-            <li><i class="fa-solid fa-xmark"></i></li>
           </ul>
-          <i class="fa-solid fa-bars"></i>
+        </div>
+        <!-- Mobile menu icons - hamburger -->
+        <i class="fa-solid fa-bars" onclick="openmenu()"></i>
+        <div id="sidemenu">
+          <!-- The navigation links for mobile are now inside sidemenu -->
+          <ul>
+            <li><i class="fa-solid fa-xmark" onclick="closemenu()"></i></li>
+            <li><a href="#header">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">CV</a></li>
+            <li><a href="#contact">Contact Me</a></li>
+          </ul>
         </div>
       </nav>
 
-      <div class="container">
-        <div class="header-text">
-          Hii, I'm <span class="name">Manoj Kumar Jha</span>
-          <div>and I am a passionate and</div>
-          <span id="element"></span>
-          <div class="mobile-note">© Manoj Kumar Jha</div>
-
-        </div>
+      <!-- header-text moved directly under #header for easier absolute positioning -->
+      <div class="header-text" data-aos="fade-up" data-aos-delay="300">
+        Hii, I'm <span class="name">Manoj Kumar Jha</span><br>
+        <span id="element"></span><br>
+        <span id="element1"></span>
       </div>
     </div>
     <hr />
@@ -206,7 +214,7 @@
 
             <div class="social-icons" data-aos="zoom-in" data-aos-delay="400">
                 <a
-                  href="https://facebook.com/yourusername"
+                  href="https://facebook.com/Imkjha1493/"
                   target="_blank"
                   rel="noopener noreferrer"
                   title="Facebook"
@@ -214,7 +222,7 @@
                   <i class="fa-brands fa-facebook" aria-hidden="true"></i>
                 </a>
                 <a
-                  href="https://twitter.com/yourusername"
+                  href="https://twitter.com/ImEraditya"
                   target="_blank"
                   rel="noopener noreferrer"
                   title="Twitter"
@@ -222,7 +230,7 @@
                   <i class="fa-brands fa-x-twitter" aria-hidden="true"></i>
                 </a>
                 <a
-                  href="https://instagram.com/yourusername"
+                  href="https://instagram.com/imeraditya"
                   target="_blank"
                   rel="noopener noreferrer"
                   title="Instagram"
@@ -230,7 +238,7 @@
                   <i class="fa-brands fa-instagram" aria-hidden="true"></i>
                 </a>
                 <a
-                  href="https://linkedin.com/in/yourusername"
+                  href="https://www.linkedin.com/in/manoj-kumar-jha-b0117270?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
                   target="_blank"
                   rel="noopener noreferrer"
                   title="LinkedIn"
@@ -255,7 +263,6 @@
           </div>
         </div>
       </div>
-      <hr />
       <div class="copyright">
         <p>Copyright &copy; Manoj, All rights reserved.</p>
       </div>
@@ -267,9 +274,12 @@
       src="https://kit.fontawesome.com/a05f5d8e8d.js"
       crossorigin="anonymous"
     ></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
+      // JavaScript for tab functionality
       var tablinks = document.getElementsByClassName("tab-links");
       var tabcontents = document.getElementsByClassName("tab-contents");
+
       function opentab(tabname) {
         for (let tablink of tablinks) {
           tablink.classList.remove("active-link");
@@ -280,20 +290,44 @@
         document.getElementById(tabname).classList.add("active-tab");
         event.currentTarget.classList.add("active-link");
       }
+
+      // JavaScript for typing animation
       var typed = new Typed("#element", {
         strings: [
-          "Working in Banking Sector and <br> having reach experience in The Corporate.",
+          "Working in Banking Sector ",
         ],
-        typeSpeed: 50,
+        typeSpeed: 20,
+         showCursor: false, // Hide the cursor for a cleaner look
       });
-    </script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-      AOS.init({
-        duration: 1200, // animation duration in ms (1.2s)
-        easing: "ease-in-out", // smoother easing
-        once: true, // animation happens only once as you scroll down
+      var typed = new Typed("#element1", {
+        strings: [
+          "and having reach experience in The Corporate.",
+        ],
+        typeSpeed: 40,
+         showCursor: false, // Hide the cursor for a cleaner look
       });
+
+      // JavaScript for AOS (Animate On Scroll) library
+      // Ensure AOS.init() is called after the library is fully loaded
+      window.onload = function() {
+        AOS.init({
+          duration: 1200, // animation duration in ms (1.2s)
+          easing: "ease-in-out", // smoother easing
+          once: true, // animation happens only once as you scroll down
+        });
+      };
+
+
+      // JavaScript for mobile navigation menu
+      var sidemenu = document.getElementById("sidemenu");
+
+      function openmenu() {
+        sidemenu.style.right = "0"; // Slide in the menu
+      }
+
+      function closemenu() {
+        sidemenu.style.right = "-200px"; // Slide out the menu
+      }
     </script>
   </body>
 </html>
