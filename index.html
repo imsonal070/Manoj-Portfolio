@@ -12,10 +12,12 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    
+    <link rel="icon" type="image/png" href="favicon.png">
+    
   </head>
   <body>
     <header></header>
-    <!-------------------------------------------hero------------------------------------------------------------>
     <div id="header" data-aos="fade-down" data-aos-delay="200">
       <nav>
         <img
@@ -23,7 +25,6 @@
           class="logo"
           alt="Manoj Kumar Jha Logo"
         />
-        <!-- Desktop Navigation -->
         <div class="desktop-nav">
           <ul>
             <li><a href="#header">Home</a></li>
@@ -32,29 +33,25 @@
             <li><a href="#contact">Contact Me</a></li>
           </ul>
         </div>
-        <!-- Mobile menu icons - hamburger -->
         <i class="fa-solid fa-bars" onclick="openmenu()"></i>
         <div id="sidemenu">
-          <!-- The navigation links for mobile are now inside sidemenu -->
           <ul>
             <li><i class="fa-solid fa-xmark" onclick="closemenu()"></i></li>
-            <li><a href="#header">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">CV</a></li>
-            <li><a href="#contact">Contact Me</a></li>
+            <li><a href="#header" onclick="closemenu()">Home</a></li>
+            <li><a href="#about" onclick="closemenu()">About</a></li>
+            <li><a href="#contact" onclick="closemenu()">CV</a></li>
+            <li><a href="#contact" onclick="closemenu()">Contact Me</a></li>
           </ul>
         </div>
       </nav>
 
-      <!-- header-text moved directly under #header for easier absolute positioning -->
-      <div class="header-text">
+      <div class="header-text" data-aos="zoom-in" data-aos-delay="300">
         Hii, I'm <span class="name">Manoj Kumar Jha</span><br>
         <span id="element"></span><br>
         <span id="element1"></span>
       </div>
     </div>
     <hr />
-    <!-----------------------------------------------About---------------------------------------------------------->
     <div id="about" data-aos="fade-up">
       <div class="container1">
         <div class="row">
@@ -88,8 +85,7 @@
               <p class="tab-links" onclick="opentab('Education')">Education</p>
               <p class="tab-links" onclick="opentab('Project')">Projects</p>
             </div>
-            <!---------------achivment----------------------->
-            <div class="tab-contents active-tab" id="Achivments">
+            <div class="tab-contents active-tab" id="Achivments" data-aos="fade-up" data-aos-delay="600">
               <ul>
                 <li>
                   Got <span>27th</span> Rank (All Over India) in
@@ -111,8 +107,6 @@
                 </li>
               </ul>
             </div>
-            <!-----------------experiences--------------------->
-
             <div class="tab-contents" id="Experiences">
               <ul>
                 <li>
@@ -147,8 +141,6 @@
                 </li>
               </ul>
             </div>
-            <!-----------------education--------------------->
-
             <div class="tab-contents" id="Education">
               <ul>
                 <li>
@@ -170,8 +162,6 @@
                 </li>
               </ul>
             </div>
-            <!-----------------projects--------------------->
-
             <div class="tab-contents" id="Project">
               <ul>
                 <li><span>Title:</span> Make ATV Car.</li>
@@ -193,7 +183,6 @@
       </div>
     </div>
     <hr />
-    <!------------------------------------------------contact-------------------------------------->
     <div id="contact">
       <div class="container1">
         <div class="row">
@@ -253,7 +242,7 @@
               Here you can Download.
             </p>
             <br />
-            <a href="Manoj Kumar Jha.pdf" download="Manoj Kumar Jha.pdf" class="btn" data-aos="zoom-in" data-aos-delay="400" title="Download CV" rel="noopener">
+            <a href="Manoj Kumar Jha.pdf" download="Manoj Kumar Jha.pdf" class="btn" data-aos="zoom-in" data-aos-delay="350" title="Download CV" rel="noopener">
   <i class="fa-solid fa-hand-point-right"></i> Download
 </a>
 
@@ -265,7 +254,6 @@
       </div>
     </div>
 
-    <!------------------------------------------------scripts----------------------------------------------------->
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
     <script
       src="https://kit.fontawesome.com/a05f5d8e8d.js"
@@ -304,15 +292,17 @@
          showCursor: false, // Hide the cursor for a cleaner look
       });
 
-      // JavaScript for AOS (Animate On Scroll) library
-      // Ensure AOS.init() is called after the library is fully loaded
-      window.onload = function() {
+      // JavaScript for AOS (Animate On Scroll) library and scroll to top
+      // Using DOMContentLoaded to ensure scripts run as soon as the HTML is parsed
+      document.addEventListener('DOMContentLoaded', function() {
         AOS.init({
-          duration: 1200, // animation duration in ms (1.2s)
+          duration: 800, // animation duration in ms (1.2s)
           easing: "ease-in-out", // smoother easing
           once: false, // animation happens only once as you scroll down
         });
-      };
+        // Scroll to the top of the page on load
+        window.scrollTo(0, 0);
+      });
 
 
       // JavaScript for mobile navigation menu
@@ -323,7 +313,7 @@
       }
 
       function closemenu() {
-        sidemenu.style.right = "-200px"; // Slide out the menu
+        sidemenu.style.right = "-250px"; // Slide out the menu completely
       }
     </script>
   </body>
