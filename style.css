@@ -5,15 +5,58 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth; /* Smooth scroll for anchor links */
+}
+
 html, body {
   overflow-x: hidden; /* Ensure no horizontal scroll from parent elements */
 }
 
-body {
-  background-color:#F0E5D3;
-  color: #080808;
-  font-family: "Poppins", sans-serif;
+/* CSS Variables */
+:root {
+  --background-color: #F0E5D3;
+  --text-color: #080808;
+  --accent-color: #c91a0a; /* Crimson */
+  --name-color: rgb(152, 5, 189); /* Original purple for name */
+  --light-border-color: rgba(0, 0, 0, 0.1);
+  --subtle-background-pattern: repeating-linear-gradient(
+    45deg,
+    rgba(0, 0, 0, 0.01),
+    rgba(0, 0, 0, 0.01) 2px,
+    transparent 2px,
+    transparent 4px
+  );
 }
+
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: "Poppins", sans-serif;
+  line-height: 1.6; /* Improved readability for body text */
+  background-image: var(--subtle-background-pattern); /* Subtle background pattern */
+}
+
+/* Custom Scrollbar Styling (for WebKit browsers like Chrome, Safari) */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent-color);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ff004f; /* Slightly darker or different hover color for thumb */
+}
+
 
 /* Global Image Responsiveness */
 img {
@@ -30,6 +73,7 @@ img {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-attachment: fixed; /* Parallax effect */
   position: relative;
   padding: 20px 0;
 }
@@ -68,7 +112,7 @@ nav {
 
 .desktop-nav ul li a {
   text-decoration: none;
-  color: black;
+  color: var(--text-color);
   font-size: 1.1rem;
   position: relative;
   transition: color 0.3s;
@@ -78,7 +122,7 @@ nav {
   content: "";
   width: 0;
   height: 2px;
-  background-color: crimson;
+  background-color: var(--accent-color);
   position: absolute;
   left: 0;
   bottom: -6px;
@@ -92,17 +136,17 @@ nav {
 /* Hero Section Text */
 .header-text {
   position: absolute;
-  bottom: 5%;
-  left: 30%;
-  transform: translate(-50%, -50%);
+  bottom: 10%; /* Slightly higher for more space */
+  left: 10%; /* Align more to the left */
+  /* transform: translate(-50%, -50%); - Removed for left alignment */
   width: 90%;
   max-width: 800px;
-  text-align: center;
+  text-align: left; /* Aligned left */
   font-size: 3rem;
   line-height: 1.2;
   padding: 0 20px;
   box-sizing: border-box;
-  color: #080808;
+  color: var(--text-color);
 }
 
 .header-text h1 {
@@ -110,7 +154,7 @@ nav {
 }
 
 .name {
-  color: rgb(152, 5, 189);
+  color: var(--name-color); /* Keeping the purple for the name */
 }
 
 #element, #element1 {
@@ -124,10 +168,18 @@ nav {
   display: none;
 }
 
+/* Horizontal Rule (Separator) */
+hr {
+  border: none;
+  border-top: 1px solid var(--light-border-color); /* Lighter, more subtle line */
+  margin: 50px auto; /* Vertical spacing */
+  width: 80%; /* Not full width */
+}
+
 /* About Section */
 #about {
   padding: 80px 5%;
-  color: rgb(44, 2, 64);
+  color: rgb(44, 2, 64); /* This color is very dark, consider var(--text-color) */
 }
 
 .container1 {
@@ -175,17 +227,16 @@ nav {
   font-weight: 500;
   cursor: pointer;
   position: relative;
-  color: #080808;
+  color: var(--text-color);
   padding-bottom: 8px;
   transition: color 0.3s;
-  /* Removed white-space: nowrap; here to allow wrapping */
 }
 
 .tab-links::after {
   content: "";
   width: 0;
   height: 2px;
-  background-color: crimson;
+  background-color: var(--accent-color);
   position: absolute;
   left: 0;
   bottom: 0;
@@ -209,7 +260,7 @@ nav {
 
 .tab-contents ul li span {
   font-size: 1.1em;
-  color: #c91a0a;
+  color: var(--accent-color);
   font-weight: 600;
 }
 
@@ -225,7 +276,7 @@ nav {
 #contact {
   margin: 100px 0;
   padding: 0 5%;
-  color: rgb(44, 2, 64);
+  color: rgb(44, 2, 64); /* This color is very dark, consider var(--text-color) */
 }
 
 .contact-left {
@@ -249,7 +300,7 @@ nav {
 .contact-left p i {
   margin-right: 15px;
   font-size: 1.2em;
-  color: crimson;
+  color: var(--accent-color);
 }
 
 .social-icons {
@@ -257,47 +308,48 @@ nav {
   gap: 20px;
   margin-top: 30px;
   flex-wrap: wrap; /* Allow social icons to wrap if space is tight */
-  justify-content: center; /* Center them when wrapped */
+  justify-content: flex-start; /* Align to the left initially */
 }
 
 .social-icons a {
   text-decoration: none;
-  color: black;
+  color: var(--text-color);
   font-size: 30px;
   display: inline-block;
-  transition: transform 0.3s, color 0.3s;
+  transition: transform 0.3s, color 0.3s; /* Smoother transition */
 }
 
 .social-icons a:hover {
-  color: crimson;
+  color: var(--accent-color);
   transform: scale(1.2);
 }
 
 .btn {
   display: inline-block;
   padding: 12px 25px;
-  background-color: #c91a0a;
+  background-color: var(--accent-color);
   color: white;
   text-decoration: none;
   border-radius: 5px;
-  transition: background-color 0.3s, transform 0.3s;
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s; /* Added box-shadow transition */
   margin-top: 20px;
   font-size: 1rem;
 }
 
 .btn:hover {
-  background-color: #ff004f;
+  background-color: #ff004f; /* Slightly different hover color */
   transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Subtle shadow on hover */
 }
 
 /* Copyright Section */
 .copyright {
   text-align: center;
-  color: #080808;
+  color: var(--text-color);
   font-weight: 300;
   margin-top: 50px;
   padding: 25px 0;
-  background-color: #e0d0c0;
+  background-color: #e0d0c0; /* Slightly different background for copyright */
   font-size: 0.95rem;
 }
 
@@ -310,7 +362,7 @@ nav .fa-solid {
 
 /* Mobile Menu Sidebar */
 #sidemenu {
-  background: #ff004f;
+  background: var(--accent-color);
   position: fixed;
   top: 0;
   right: -250px;
@@ -355,7 +407,7 @@ nav .fa-solid {
 /* Medium Desktops (max-width: 1199px) */
 @media (max-width: 1199px) {
   .header-text {
-    left: 35%;
+    left: 8%; /* Adjusted for medium screens */
     font-size: 2.5rem;
     bottom: 10%;
   }
@@ -371,6 +423,7 @@ nav .fa-solid {
 @media (max-width: 991px) {
   #header {
     background-image: url(manoj\ jha\ \(2\).jpg);
+    background-attachment: scroll; /* Disable parallax on smaller screens for performance/simplicity */
   }
   .desktop-nav {
     display: none;
@@ -378,7 +431,7 @@ nav .fa-solid {
   nav .fa-solid {
     display: block;
     font-size: 25px;
-    color: black;
+    color: var(--text-color);
     margin-left: auto;
   }
 
@@ -417,7 +470,7 @@ nav .fa-solid {
   }
 
   .about-col-2 {
-    text-align: left;
+    text-align: left; /* Aligned left for better readability on tablets */
     width: 100%;
   }
 
@@ -449,14 +502,14 @@ nav .fa-solid {
   .contact-left, .contact-right {
     flex-basis: 100%;
     padding-right: 0;
-    text-align: center;
-    align-items: center;
+    text-align: left; /* Aligned left for better readability */
+    align-items: flex-start; /* Aligned items to the start */
   }
   .social-icons {
-    justify-content: center;
+    justify-content: flex-start; /* Aligned left */
   }
   .contact-left p {
-    text-align: center;
+    text-align: left; /* Aligned left */
   }
   .contact-left p i {
     margin-right: 8px;
@@ -482,6 +535,7 @@ nav .fa-solid {
   }
   .sub-title {
     font-size: 40px;
+    text-align: center; /* Center title on smaller screens */
   }
   .tab-titles {
     flex-direction: column;
@@ -513,8 +567,9 @@ nav .fa-solid {
 /* Small Phones (max-width: 575px) */
 @media (max-width: 575px) {
   #header {
-    background-image: url(manoj_jha1.jpg);
+    background-image: url(manoj_jha1.jpg); /* Different image for small phones */
     padding: 15px 0;
+    background-attachment: scroll; /* Disable parallax on smaller screens */
   }
   nav {
     padding: 0 3%;
@@ -528,7 +583,7 @@ nav .fa-solid {
   }
   .header-text {
     font-size: 1.8rem;
-    bottom: 2%;
+    bottom: 8%;
     left: 2%;
     right: 2%;
   }
@@ -554,7 +609,7 @@ nav .fa-solid {
     text-align: center;
   }
   .about-col-2 {
-    text-align: center;
+    text-align: center; /* Center on very small phones for 'about' content */
   }
   .tab-titles {
     padding-left: 0;
@@ -570,10 +625,11 @@ nav .fa-solid {
   }
   .contact-left p, .contact-right p, .contact-right h1 {
     font-size: 0.95rem;
-    text-align: center;
+    text-align: center; /* Center contact text on very small phones */
   }
   .social-icons {
     gap: 10px;
+    justify-content: center; /* Center social icons on very small phones */
   }
   .copyright {
     margin-top: 30px;
@@ -587,6 +643,7 @@ nav .fa-solid {
   #header {
     height: auto;
     min-height: 100vh;
+    background-attachment: scroll; /* Disable parallax in landscape mobile */
   }
   .header-text {
     position: relative;
@@ -624,5 +681,10 @@ nav .fa-solid {
   .contact-left, .contact-right {
     flex-basis: 48%;
     max-width: 48%;
+    text-align: left; /* Maintain left alignment for larger landscape screens */
+    align-items: flex-start;
+  }
+  .social-icons {
+    justify-content: flex-start;
   }
 }
